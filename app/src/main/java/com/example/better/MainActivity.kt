@@ -11,6 +11,9 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,37 +44,19 @@ fun BetterApp() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .wrapContentSize(Alignment.Center)
+                .wrapContentSize(Alignment.TopCenter)
                 .background(Color.Black)
-                .padding(horizontal = 12.dp)
+                .padding(horizontal = 8.dp)
                 .border(12.dp, Color.Black, RoundedCornerShape(18.dp)),
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)
-                    .background(Color(0xFF222222))
-                    .border(8.dp, Color(0xFF222222), RoundedCornerShape(15.dp)),
-                horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                CustomButton(
-                    buttonHandler = { /*TODO*/ },
-                    buttonState = true,
-                    buttonContent = "Goal"
-                )
-                CustomButton(
-                    buttonHandler = { /*TODO*/ },
-                    buttonState = false,
-                    buttonContent = "Activity"
-                )
-            }
+            ButtonToggleRow()
+            AddActivityRow()
         }
     }
 }
 
 @Composable
-fun RowScope.CustomButton(
+fun RowScope.CustomToggleButton(
     buttonHandler: () -> Unit,
     buttonState: Boolean,
     buttonContent: String
@@ -90,5 +75,56 @@ fun RowScope.CustomButton(
             .weight(1f)
     ) {
         Text(text = buttonContent)
+    }
+}
+
+@Composable
+fun ColumnScope.ButtonToggleRow() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)
+            .background(Color(0xFF222222))
+            .border(8.dp, Color(0xFF222222), RoundedCornerShape(15.dp)),
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        CustomToggleButton(
+            buttonHandler = { /*TODO*/ },
+            buttonState = true,
+            buttonContent = "Goal"
+        )
+        CustomToggleButton(
+            buttonHandler = { /*TODO*/ },
+            buttonState = false,
+            buttonContent = "Activity"
+        )
+    }
+}
+
+@Composable
+fun ColumnScope.AddActivityRow() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)
+            .background(Color(0xFF222222))
+            .border(8.dp, Color(0xFF222222), RoundedCornerShape(15.dp)),
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Button(
+            onClick = { /*TODO*/ },
+            modifier = Modifier.weight(1f),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.White
+            )
+        ) {
+            Icon(
+                Icons.Default.Add, null
+            )
+            Text(text = "Add new activity")
+        }
     }
 }
