@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Better</string>
+    <string name="primary_color">0xFF00D2E3</string>
+    <string name="secondary_color">0xFF670EFD</string>
+    <string name="text_primary_color">0xFF8076B0</string>
+    <string name="text_secondary_color">0xFFF1F0FB</string>
+    <string name="background_color">0xFFF5F5F5</string>
 </resources>
